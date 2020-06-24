@@ -14,6 +14,7 @@ mod moves_in_squared_strings_i;
 mod numbers_to_letters;
 mod operations_with_sequence;
 mod ordered_count_of_characters;
+mod pandemia;
 mod robinson_crusoe;
 mod row_weights;
 mod target_date;
