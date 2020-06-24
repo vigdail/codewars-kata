@@ -2,6 +2,7 @@ mod a_rule_of_divisibility_by_7;
 mod apparently_modifying_strings;
 mod build_a_square;
 mod categorize_new_member;
+mod coloured_triangles;
 mod digital_cypher;
 mod easy_wallpaper;
 mod even_numbers_in_an_array;
