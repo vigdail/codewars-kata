@@ -9,6 +9,7 @@ mod don_t_give_me_five;
 mod easy_wallpaper;
 mod even_numbers_in_an_array;
 mod find_the_nth_digit_of_a_number;
+mod floating_point_approximation_3;
 mod form_the_largest;
 mod gradually_adding_parameters;
 mod how_green_is_my_valley;
