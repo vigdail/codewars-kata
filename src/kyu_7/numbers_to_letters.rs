@@ -1,4 +1,4 @@
-fn switcher(numbers: Vec<&str>) -> String {
+pub fn switcher(numbers: Vec<&str>) -> String {
     numbers
         .iter()
         .map(|s| match s.parse::<u8>().unwrap() {

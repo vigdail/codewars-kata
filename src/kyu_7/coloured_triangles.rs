@@ -1,7 +1,7 @@
 // Coloured Triangles
 // https://www.codewars.com/kata/5a25ac6ac5e284cfbe000111/train/rust
 
-fn triangle(row_str: &str) -> String {
+pub fn triangle(row_str: &str) -> String {
     let mut s: Vec<_> = row_str.chars().collect();
     loop {
         if s.len() == 1 {

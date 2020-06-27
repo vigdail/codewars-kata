@@ -1,7 +1,7 @@
 /// https://www.codewars.com/kata/577b9960df78c19bca00007e/train/rust
 /// Find the nth Digit of a Number
 
-fn find_digit(num: i32, nth: i32) -> i32 {
+pub fn find_digit(num: i32, nth: i32) -> i32 {
     if nth <= 0 {
         return -1;
     }

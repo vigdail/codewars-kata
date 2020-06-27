@@ -1,7 +1,7 @@
 /// Two to One
 /// https://www.codewars.com/kata/5656b6906de340bd1b0000ac/train/rust
 
-fn longest(a1: &str, a2: &str) -> String {
+pub fn longest(a1: &str, a2: &str) -> String {
     let mut s = a1.chars().chain(a2.chars()).collect::<Vec<_>>();
     s.sort_by(|a, b| a.cmp(b));
     s.dedup();
@@ -9,9 +9,9 @@ fn longest(a1: &str, a2: &str) -> String {
     s.iter().collect()
 }
 
-mod the_best {
+pub mod the_best {
     use std::collections::BTreeSet;
-    fn longest(a1: &str, a2: &str) -> String {
+    pub fn longest(a1: &str, a2: &str) -> String {
         a1.chars()
             .chain(a2.chars())
             .collect::<BTreeSet<char>>()

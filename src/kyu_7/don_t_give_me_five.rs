@@ -1,7 +1,7 @@
 // Don't give me five!
 // https://www.codewars.com/kata/5813d19765d81c592200001a/train/rust
 
-fn dont_give_me_five(start: isize, end: isize) -> isize {
+pub fn dont_give_me_five(start: isize, end: isize) -> isize {
     (start..=end)
         .filter(|i| !i.to_string().contains("5"))
         .count() as isize

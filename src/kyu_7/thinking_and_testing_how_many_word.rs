@@ -1,7 +1,7 @@
 // Thinking & Testing : How many "word"?
 // https://www.codewars.com/kata/56eff1e64794404a720002d2/train/rust
 
-fn testit(s: &str) -> usize {
+pub fn testit(s: &str) -> usize {
     s.to_lowercase()
         .chars()
         .fold(('w', 0), |(need, count), c| {

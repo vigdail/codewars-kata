@@ -3,7 +3,7 @@
 
 // We need to take in account Loss of Significance
 // https://en.wikipedia.org/wiki/Loss_of_significance
-fn quadratic(a: f64, b: f64, c: f64) -> f64 {
+pub fn quadratic(a: f64, b: f64, c: f64) -> f64 {
     let d = b * b - 4.0 * a * c;
     let x1 = -(b + d.sqrt()) / 2.0 / a;
     let x2 = c / a / x1;

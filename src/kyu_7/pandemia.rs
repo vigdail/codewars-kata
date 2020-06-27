@@ -1,7 +1,7 @@
 // Pandemia
 // https://www.codewars.com/kata/5e2596a9ad937f002e510435/train/rust
 
-fn infected(s: &str) -> f64 {
+pub fn infected(s: &str) -> f64 {
     let (infect, total) = s.split("X").fold((0.0, 0.0), |(mut ai, at), continent| {
         if continent.contains('1') {
             ai += continent.len() as f64;

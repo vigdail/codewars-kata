@@ -1,7 +1,7 @@
 /// How Green Is My Valley
 /// https://www.codewars.com/kata/56e3cd1d93c3d940e50006a4/train/rust
 
-fn make_valley(arr: Vec<i32>) -> Vec<i32> {
+pub fn make_valley(arr: Vec<i32>) -> Vec<i32> {
     let mut arr = arr;
     arr.sort_by(|a, b| b.cmp(a));
 

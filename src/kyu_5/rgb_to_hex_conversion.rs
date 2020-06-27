@@ -1,7 +1,7 @@
 // RGB To Hex Conversion
 // https://www.codewars.com/kata/513e08acc600c94f01000001/train/rust
 
-fn rgb(r: i32, g: i32, b: i32) -> String {
+pub fn rgb(r: i32, g: i32, b: i32) -> String {
     format!(
         "{:02X}{:02X}{:02X}",
         r.max(0).min(255),

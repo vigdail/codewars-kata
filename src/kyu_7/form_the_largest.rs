@@ -1,4 +1,4 @@
-fn max_number(n: u32) -> u32 {
+pub fn max_number(n: u32) -> u32 {
     let mut chars = n.to_string().chars().collect::<Vec<char>>();
     chars.sort_by(|a, b| b.cmp(a));
     chars.iter().collect::<String>().parse::<u32>().unwrap()

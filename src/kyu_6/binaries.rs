@@ -1,7 +1,7 @@
 /// https://www.codewars.com/kata/5d98b6b38b0f6c001a461198/train/rust
 /// Binaries
 
-fn code(s: &str) -> String {
+pub fn code(s: &str) -> String {
     s.chars()
         .map(|c| {
             let bin = format!("{:b}", c.to_digit(10).unwrap_or(0));
@@ -12,7 +12,7 @@ fn code(s: &str) -> String {
         .join("")
 }
 
-fn decode(s: &str) -> String {
+pub fn decode(s: &str) -> String {
     let mut mode = true;
     let mut k = 0;
     let mut bin = Vec::new();

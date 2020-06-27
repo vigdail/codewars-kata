@@ -14,7 +14,7 @@ impl std::fmt::Display for Prod {
     }
 }
 
-fn catalog(s: &str, article: &str) -> String {
+pub fn catalog(s: &str, article: &str) -> String {
     let r = s
         .split("\n")
         .filter_map(parse_prod)

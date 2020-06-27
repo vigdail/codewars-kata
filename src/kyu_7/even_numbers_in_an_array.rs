@@ -1,7 +1,7 @@
 /// Even numbers in an array
 /// https://www.codewars.com/kata/5a431c0de1ce0ec33a00000c/train/rust
 
-fn even_numbers(array: &Vec<i32>, number: usize) -> Vec<i32> {
+pub fn even_numbers(array: &Vec<i32>, number: usize) -> Vec<i32> {
     array
         .iter()
         .filter(|&x| x % 2 == 0)

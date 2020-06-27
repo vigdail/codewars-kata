@@ -1,6 +1,6 @@
 /// https://www.codewars.com/kata/555b73a81a6285b6ce000047/train/rust
 /// Gradually Adding Parameters
-fn add(args: &[i64]) -> i64 {
+pub fn add(args: &[i64]) -> i64 {
     args.iter()
         .enumerate()
         .fold(0, |acc, (i, x)| acc + (i + 1) as i64 * x)

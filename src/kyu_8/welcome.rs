@@ -2,7 +2,7 @@
 /// Welcome!
 use std::collections::HashMap;
 
-fn greet(language: &str) -> &str {
+pub fn greet(language: &str) -> &str {
     let data: HashMap<&str, &str> = [
         ("english", "Welcome"),
         ("czech", "Vitejte"),

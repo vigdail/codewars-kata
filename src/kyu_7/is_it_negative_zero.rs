@@ -1,7 +1,7 @@
 /// Is It Negative Zero
 /// https://www.codewars.com/kata/5c5086287bc6600001c7589a/train/rust
 
-fn is_negative_zero(n: f32) -> bool {
+pub fn is_negative_zero(n: f32) -> bool {
     n.is_sign_negative() && n == 0.0
 }
 

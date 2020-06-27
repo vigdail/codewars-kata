@@ -1,6 +1,6 @@
 /// https://www.codewars.com/kata/57a6633153ba33189e000074/train/rust
 /// Ordered Count of Characters
-fn ordered_count(sip: &str) -> Vec<(char, i32)> {
+pub fn ordered_count(sip: &str) -> Vec<(char, i32)> {
     let mut v = Vec::new();
     let mut x = Vec::new();
     sip.chars().for_each(|c| {

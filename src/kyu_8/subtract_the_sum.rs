@@ -2,7 +2,7 @@
 // https://www.codewars.com/kata/56c5847f27be2c3db20009c3
 // Btw this kata designed in such way as to return only "apple" at any input =(
 
-fn subtract_sum(n: u32) -> &'static str {
+pub fn subtract_sum(n: u32) -> &'static str {
     let v = [
         "kiwi",
         "pear",

@@ -1,7 +1,6 @@
 // https://www.codewars.com/kata/5b18e9e06aefb52e1d0001e9/train/rust
 
-// my
-fn riders(stations: &Vec<u32>) -> u32 {
+pub fn riders(stations: &Vec<u32>) -> u32 {
     let mut i = 1;
     stations.iter().fold(0, |acc, x| {
         let len = acc + x;
@@ -14,7 +13,7 @@ fn riders(stations: &Vec<u32>) -> u32 {
     i
 }
 
-fn riders_best(stations: &Vec<u32>) -> u32 {
+pub fn riders_best(stations: &Vec<u32>) -> u32 {
     stations
         .iter()
         .fold((0, 1), |(mile, rider), &x| {

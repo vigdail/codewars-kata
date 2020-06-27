@@ -1,17 +1,17 @@
 /// https://www.codewars.com/kata/56dbe0e313c2f63be4000b25/train/rust
 /// Moves in squared strings (I)
 
-fn hor_mirror(s: String) -> String {
+pub fn hor_mirror(s: String) -> String {
     s.split('\n').rev().collect::<Vec<_>>().join("\n")
 }
-fn vert_mirror(s: String) -> String {
+pub fn vert_mirror(s: String) -> String {
     s.split('\n')
         .map(|x| x.chars().rev().collect::<String>())
         .collect::<Vec<_>>()
         .join("\n")
 }
 // first parameter: dots have to be replaced by function of one variable
-fn oper(f: impl Fn(String) -> String, s: String) -> String {
+pub fn oper(f: impl Fn(String) -> String, s: String) -> String {
     f(s)
 }
 

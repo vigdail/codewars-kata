@@ -3,12 +3,12 @@
 
 use std::collections::HashMap;
 
-struct MorseDecoder {
+pub struct MorseDecoder {
     morse_code: HashMap<String, String>,
 }
 
 impl MorseDecoder {
-    fn new() -> Self {
+    pub fn new() -> Self {
         let mut map = HashMap::new();
         map.insert("....".to_string(), "H".to_string());
         map.insert(".".to_string(), "E".to_string());
@@ -20,7 +20,7 @@ impl MorseDecoder {
         map.insert(".".to_string(), "E".to_string());
         Self { morse_code: map }
     }
-    fn decode_morse(&self, encoded: &str) -> String {
+    pub fn decode_morse(&self, encoded: &str) -> String {
         encoded
             .trim()
             .split("   ")

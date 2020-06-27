@@ -1,7 +1,7 @@
 /// Operations with sequence
 /// https://www.codewars.com/kata/596ddaccdd42c1cf0e00005c/train/rust
 
-fn calc(array: Vec<i32>) -> i32 {
+pub fn calc(array: Vec<i32>) -> i32 {
     array
         .iter()
         .enumerate()

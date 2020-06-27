@@ -1,7 +1,7 @@
 // Largest 5 digit number in a series
 // https://www.codewars.com/kata/51675d17e0c1bed195000001/train/rust
 
-fn largest_five_digit_number(num: &str) -> u32 {
+pub fn largest_five_digit_number(num: &str) -> u32 {
     num.chars()
         .collect::<Vec<_>>()
         .windows(5)

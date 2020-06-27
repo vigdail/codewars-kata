@@ -3,7 +3,7 @@
 
 use chrono::NaiveDate;
 
-fn date_nb_days(a0: i32, a: i32, p: i32) -> String {
+pub fn date_nb_days(a0: i32, a: i32, p: i32) -> String {
     let a = a as f64;
     let p = p as f64 / 36000.0;
     let mut r = a0 as f64;

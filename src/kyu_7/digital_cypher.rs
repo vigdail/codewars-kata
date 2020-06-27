@@ -1,4 +1,4 @@
-fn encode(msg: String, n: i32) -> Vec<i32> {
+pub fn encode(msg: String, n: i32) -> Vec<i32> {
     msg.chars()
         .zip(
             n.to_string()

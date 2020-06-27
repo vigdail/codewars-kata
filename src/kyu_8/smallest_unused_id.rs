@@ -1,7 +1,7 @@
 // https://www.codewars.com/kata/55eea63119278d571d00006a/train/rust
 // Smallest unused ID
 
-fn next_id(ids: &[usize]) -> usize {
+pub fn next_id(ids: &[usize]) -> usize {
     (0..=ids.len())
         .skip_while(|x| ids.contains(x))
         .next()

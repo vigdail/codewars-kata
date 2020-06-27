@@ -1,9 +1,12 @@
 // Simple assembler interpreter
 // https://www.codewars.com/kata/58e24788e24ddee28e000053/train/rust
 
-#![allow(dead_code)]
-
 use std::collections::HashMap;
+
+pub fn simple_assembler(program: Vec<&str>) -> HashMap<String, i64> {
+    let mut cpu = Interpreter::new(program);
+    cpu.process()
+}
 
 struct Interpreter {
     p: usize,
@@ -104,11 +107,6 @@ enum Command {
     Inc(Arg),
     Dec(Arg),
     Jnz(Arg, Arg),
-}
-
-fn simple_assembler(program: Vec<&str>) -> HashMap<String, i64> {
-    let mut cpu = Interpreter::new(program);
-    cpu.process()
 }
 
 #[cfg(test)]

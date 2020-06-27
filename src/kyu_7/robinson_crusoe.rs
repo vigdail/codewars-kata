@@ -3,7 +3,7 @@
 /// =================================================================
 use std::f64;
 
-fn crusoe(n: i32, d: f64, ang: i32, distmult: f64, angmult: f64) -> (f64, f64) {
+pub fn crusoe(n: i32, d: f64, ang: i32, distmult: f64, angmult: f64) -> (f64, f64) {
     let mut ang = f64::consts::PI * ang as f64 / 180.0;
     let mut d = d;
     let mut x = d * ang.cos();

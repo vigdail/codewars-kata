@@ -1,7 +1,7 @@
 /// Easy wallpaper
 /// https://www.codewars.com/kata/567501aec64b81e252000003/train/rust
 
-fn wall_paper(l: f64, w: f64, h: f64) -> String {
+pub fn wall_paper(l: f64, w: f64, h: f64) -> String {
     if l == 0.0 || w == 0.0 || h == 0.0 {
         return "zero".to_string();
     }

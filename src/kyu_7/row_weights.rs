@@ -1,7 +1,7 @@
 /// Row Weights
 /// https://www.codewars.com/kata/5abd66a5ccfd1130b30000a9/train/rust
 
-fn row_weights(array: Vec<u32>) -> (u32, u32) {
+pub fn row_weights(array: Vec<u32>) -> (u32, u32) {
     (
         array.iter().step_by(2).sum(),
         array.iter().skip(1).step_by(2).sum(),

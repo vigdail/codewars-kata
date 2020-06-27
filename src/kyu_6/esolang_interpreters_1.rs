@@ -1,7 +1,7 @@
 // Esolang Interpreters #1 - Introduction to Esolangs and My First Interpreter (MiniStringFuck)
 // https://www.codewars.com/kata/586dd26a69b6fd46dd0000c0/train/rust
 
-fn my_first_interpreter(code: &str) -> String {
+pub fn my_first_interpreter(code: &str) -> String {
     code.chars()
         .fold((0u8, String::new()), |(mem, result), c| match c {
             '+' => (mem.wrapping_add(1), result),

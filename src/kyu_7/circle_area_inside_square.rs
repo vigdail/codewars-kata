@@ -1,7 +1,7 @@
 // Circle area inside square
 // https://www.codewars.com/kata/5899aa695401a83a5c0000c4/train/rust
 
-fn square_area_to_circle(size: f64) -> f64 {
+pub fn square_area_to_circle(size: f64) -> f64 {
     size * std::f64::consts::PI / 4.0
 }
 

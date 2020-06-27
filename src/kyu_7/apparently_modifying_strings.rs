@@ -1,6 +1,6 @@
 /// https://www.codewars.com/kata/5b049d57de4c7f6a6c0001d7/train/rust
 /// Apparently-Modifying Strings
-fn apparently(string: &str) -> String {
+pub fn apparently(string: &str) -> String {
     format!("{} ", string)
         .split(" ")
         .collect::<Vec<_>>()

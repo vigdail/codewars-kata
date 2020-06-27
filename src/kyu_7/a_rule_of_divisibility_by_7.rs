@@ -1,6 +1,6 @@
 /// https://www.codewars.com/kata/55e6f5e58f7817808e00002e/train/rust
 /// A Rule of Divisibility by 7
-fn seven(n: i64) -> (i64, i32) {
+pub fn seven(n: i64) -> (i64, i32) {
     if n == 0 {
         return (0, 0);
     }

@@ -1,6 +1,6 @@
 /// https://www.codewars.com/kata/5502c9e7b3216ec63c0001aa/train/rust
 /// Categorize New Member
-fn open_or_senior(data: Vec<(i32, i32)>) -> Vec<String> {
+pub fn open_or_senior(data: Vec<(i32, i32)>) -> Vec<String> {
     data.iter()
         .map(|&(age, h)| {
             if age >= 55 && h > 7 {
