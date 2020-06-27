@@ -1,1 +1,2 @@
 mod rgb_to_hex_conversion;
+mod simple_assembler_interpreter;
