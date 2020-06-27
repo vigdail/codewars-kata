@@ -5,6 +5,7 @@ mod categorize_new_member;
 mod circle_area_inside_square;
 mod coloured_triangles;
 mod digital_cypher;
+mod don_t_give_me_five;
 mod easy_wallpaper;
 mod even_numbers_in_an_array;
 mod find_the_nth_digit_of_a_number;
