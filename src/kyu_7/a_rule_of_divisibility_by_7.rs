@@ -1,9 +1,15 @@
 /// https://www.codewars.com/kata/55e6f5e58f7817808e00002e/train/rust
 /// A Rule of Divisibility by 7
 fn seven(n: i64) -> (i64, i32) {
+    if n == 0 {
+        return (0, 0);
+    }
     let mut n = n;
     let i = (0..)
         .take_while(|_| {
+            if n < 100 {
+                return false;
+            }
             let s = n.to_string();
             let x = s[0..s.len() - 1].parse::<i64>().unwrap();
             let y = s.chars().last().unwrap().to_digit(10).unwrap() as i64;
@@ -30,7 +36,6 @@ mod tests {
     }
 
     #[test]
-    #[ignore]
     fn basic_tests() {
         dotest(477557101, (28, 7));
         dotest(477557102, (47, 7));
