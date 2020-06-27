@@ -14,6 +14,7 @@ mod form_the_largest;
 mod gradually_adding_parameters;
 mod how_green_is_my_valley;
 mod is_it_negative_zero;
+mod largest_5_digit_number_in_a_series;
 mod leap_years;
 mod moves_in_squared_strings_i;
 mod numbers_to_letters;
