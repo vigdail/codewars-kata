@@ -132,19 +132,10 @@ mod tests {
     #[test]
     fn second_test() {
         let program = vec![
-            "mov c 12",
-            "mov b 0",
-            "mov a 200",
-            "dec a",
-            "inc b",
-            "jnz a -2",
-            "dec c",
-            "mov a b",
-            "jnz c -5",
-            "jnz 0 1",
-            "mov c a",
+            "mov c 1", "mov b 0", "mov a 2", "dec a", "inc b", "jnz a -2", "dec c", "mov a b",
+            "jnz c -5", "jnz 0 1", "mov c a",
         ];
-        let expected = map! { "a" => 409600, "c" => 409600, "b" => 409600};
+        let expected = map! { "a" => 2, "c" => 2, "b" => 2};
         compare_registers(expected, simple_assembler(program));
     }
 
