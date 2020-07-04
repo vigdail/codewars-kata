@@ -1,4 +1,5 @@
 pub mod binaries;
+pub mod bit_counting;
 pub mod catalog;
 pub mod decode_the_morse_code;
 pub mod esolang_interpreters_1;
