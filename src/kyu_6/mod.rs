@@ -1,6 +1,7 @@
 pub mod array_diff;
 pub mod binaries;
 pub mod bit_counting;
+pub mod bouncing_balls;
 pub mod catalog;
 pub mod chess_fun_1;
 pub mod decode_the_morse_code;
