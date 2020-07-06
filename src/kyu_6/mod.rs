@@ -1,3 +1,4 @@
+pub mod are_they_the_same;
 pub mod array_diff;
 pub mod binaries;
 pub mod bit_counting;
