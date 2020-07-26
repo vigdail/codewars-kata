@@ -1,3 +1,4 @@
+pub mod a_rule_of_divisibility_by_13;
 pub mod are_they_the_same;
 pub mod array_diff;
 pub mod binaries;
@@ -9,5 +10,6 @@ pub mod custom_fizzbuzz_array;
 pub mod decode_the_morse_code;
 pub mod esolang_interpreters_1;
 pub mod find_the_parity_outlier;
+pub mod hexagon_beam_max_sum;
 pub mod robo_script_1_implement_syntax_highlighting;
 pub mod sums_of_parts;
