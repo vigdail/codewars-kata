@@ -12,5 +12,6 @@ pub mod error_correction_1_hamming_code;
 pub mod esolang_interpreters_1;
 pub mod find_the_parity_outlier;
 pub mod hexagon_beam_max_sum;
+pub mod mexican_wave;
 pub mod robo_script_1_implement_syntax_highlighting;
 pub mod sums_of_parts;
