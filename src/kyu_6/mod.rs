@@ -8,6 +8,7 @@ pub mod catalog;
 pub mod chess_fun_1;
 pub mod custom_fizzbuzz_array;
 pub mod decode_the_morse_code;
+pub mod error_correction_1_hamming_code;
 pub mod esolang_interpreters_1;
 pub mod find_the_parity_outlier;
 pub mod hexagon_beam_max_sum;
