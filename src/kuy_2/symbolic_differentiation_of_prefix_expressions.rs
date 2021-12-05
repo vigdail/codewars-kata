@@ -1,4 +1,4 @@
-use std::fmt::Display;
+use std::{ascii::AsciiExt, fmt::Display};
 
 // Symbolic differentiation of prefix expressions
 // https://www.codewars.com/kata/584daf7215ac503d5a0001ae/train/rust
@@ -12,17 +12,19 @@ enum BinOp {
 }
 
 #[derive(Clone, Debug)]
-enum UnOp {
+enum Fun {
     Sin,
     Cos,
-    // @TODO
+    Tan,
+    Exp,
+    Ln,
 }
 #[derive(Clone, Debug)]
 enum Token {
     Number(u32),
     BinOp(BinOp),
     Var,
-    UnOp(UnOp),
+    Fun(Fun),
     Expression(Vec<Token>),
 }
 
@@ -32,7 +34,7 @@ impl ToString for Token {
             Token::Number(n) => n.to_string(),
             Token::BinOp(op) => op.to_string(),
             Token::Var => "x".to_owned(),
-            Token::UnOp(_) => todo!(),
+            Token::Fun(fun) => fun.to_string(),
             Token::Expression(exp) => format!(
                 "({})",
                 exp.iter()
@@ -47,11 +49,25 @@ impl ToString for Token {
 impl ToString for BinOp {
     fn to_string(&self) -> String {
         match self {
-            BinOp::Add => "+".to_owned(),
-            BinOp::Sub => "-".to_owned(),
-            BinOp::Mul => "*".to_owned(),
-            BinOp::Div => "/".to_owned(),
+            BinOp::Add => "+",
+            BinOp::Sub => "-",
+            BinOp::Mul => "*",
+            BinOp::Div => "/",
         }
+        .to_owned()
+    }
+}
+
+impl ToString for Fun {
+    fn to_string(&self) -> String {
+        match self {
+            Fun::Sin => "sin",
+            Fun::Cos => "cos",
+            Fun::Tan => "tan",
+            Fun::Exp => "exp",
+            Fun::Ln => "ln",
+        }
+        .to_owned()
     }
 }
 
@@ -156,17 +172,30 @@ pub fn diff(expr: &str) -> String {
         .join(" ")
 }
 
-//
 #[cfg(test)]
 mod tests {
     use super::*;
 
     #[test]
     fn token_to_string() {
-        let input = "* 2 x".to_owned();
-        let result = diff(&input);
+        let input = Token::Expression(vec![Token::BinOp(BinOp::Add), Token::Number(2), Token::Var]);
+        let result = input.to_string();
         println!("{:?}", result);
-        assert_eq!(&result, "(+ (* 2 1) (* 0 x))")
+        assert_eq!(&result, "(+ 2 x)");
+
+        let input = Token::Expression(vec![Token::Fun(Fun::Tan), Token::Var]);
+        let result = input.to_string();
+        println!("{:?}", result);
+        assert_eq!(&result, "(tan x)");
+
+        let input = Token::Expression(vec![
+            Token::BinOp(BinOp::Mul),
+            Token::Expression(vec![Token::Fun(Fun::Tan), Token::Var]),
+            Token::Number(20),
+        ]);
+        let result = input.to_string();
+        println!("{:?}", result);
+        assert_eq!(&result, "(* (tan x) 20)");
     }
 
     #[test]
