@@ -1,5 +1,3 @@
-use std::{ascii::AsciiExt, fmt::Display};
-
 // Symbolic differentiation of prefix expressions
 // https://www.codewars.com/kata/584daf7215ac503d5a0001ae/train/rust
 
