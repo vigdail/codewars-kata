@@ -41,7 +41,9 @@ impl AssemblerInterpreter {
                 Command::Ret => {
                     self.ip = self.stack.pop().unwrap();
                 }
-                Command::UnOp { name, param } => self.process_unop(name.clone(), param.clone()),
+                Command::UnOp { name, param } => {
+                    self.process_unop(name.clone(), param.clone());
+                }
                 Command::BinOp { name, left, right } => {
                     self.process_binop(name.clone(), left.clone(), right.clone())
                 }
