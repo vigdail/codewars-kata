@@ -1,3 +1,5 @@
+use std::fmt::Display;
+
 // Symbolic differentiation of prefix expressions
 // https://www.codewars.com/kata/584daf7215ac503d5a0001ae/train/rust
 
@@ -21,7 +23,36 @@ enum Token {
     BinOp(BinOp),
     Var,
     UnOp(UnOp),
-    SubTokens(Vec<Token>),
+    Expression(Vec<Token>),
+}
+
+impl ToString for Token {
+    fn to_string(&self) -> String {
+        match self {
+            Token::Number(n) => n.to_string(),
+            Token::BinOp(op) => op.to_string(),
+            Token::Var => "x".to_owned(),
+            Token::UnOp(_) => todo!(),
+            Token::Expression(exp) => format!(
+                "({})",
+                exp.iter()
+                    .map(|t| t.to_string())
+                    .collect::<Vec<_>>()
+                    .join(" ")
+            ),
+        }
+    }
+}
+
+impl ToString for BinOp {
+    fn to_string(&self) -> String {
+        match self {
+            BinOp::Add => "+".to_owned(),
+            BinOp::Sub => "-".to_owned(),
+            BinOp::Mul => "*".to_owned(),
+            BinOp::Div => "/".to_owned(),
+        }
+    }
 }
 
 trait Diff {
@@ -50,26 +81,26 @@ impl Diff for BinOp {
         let left = tokens.pop().unwrap();
         let right = tokens.pop().unwrap();
         match self {
-            BinOp::Add => Token::SubTokens(vec![
+            BinOp::Add => Token::Expression(vec![
                 Token::BinOp(BinOp::Add),
                 left.diff(tokens),
                 right.diff(tokens),
             ]),
-            BinOp::Sub => Token::SubTokens(vec![
+            BinOp::Sub => Token::Expression(vec![
                 Token::BinOp(BinOp::Sub),
                 left.diff(tokens),
                 right.diff(tokens),
             ]),
-            BinOp::Mul => Token::SubTokens(vec![
+            BinOp::Mul => Token::Expression(vec![
                 Token::BinOp(BinOp::Add),
-                Token::BinOp(BinOp::Mul),
-                left.clone(),
-                right.diff(tokens),
-                Token::BinOp(BinOp::Mul),
-                left.diff(tokens),
-                right,
+                Token::Expression(vec![
+                    Token::BinOp(BinOp::Mul),
+                    left.clone(),
+                    right.diff(tokens),
+                ]),
+                Token::Expression(vec![Token::BinOp(BinOp::Mul), left.diff(tokens), right]),
             ]),
-            BinOp::Div => Token::SubTokens(vec![
+            BinOp::Div => Token::Expression(vec![
                 Token::BinOp(BinOp::Div),
                 // top
                 Token::BinOp(BinOp::Sub),
@@ -119,13 +150,24 @@ pub fn diff(expr: &str) -> String {
 
     println!("{:?}", res);
 
-    String::new()
+    res.iter()
+        .map(|t| t.to_string())
+        .collect::<Vec<_>>()
+        .join(" ")
 }
 
 //
 #[cfg(test)]
 mod tests {
     use super::*;
+
+    #[test]
+    fn token_to_string() {
+        let input = "* 2 x".to_owned();
+        let result = diff(&input);
+        println!("{:?}", result);
+        assert_eq!(&result, "(+ (* 2 1) (* 0 x))")
+    }
 
     #[test]
     fn simple() {
