@@ -135,7 +135,12 @@ impl Diff for BinOp {
                 right.clone(),
                 right,
             ]),
-            BinOp::Pow => unimplemented!(),
+            BinOp::Pow => match right {
+                Token::Number(n) => {
+                    Token::Expression(vec![Token::BinOp(BinOp::Mul), Token::Number(n - 1), left])
+                }
+                _ => unimplemented!(),
+            },
         }
     }
 }
