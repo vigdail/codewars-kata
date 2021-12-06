@@ -149,7 +149,12 @@ impl Diff for BinOp {
             ]
             .into(),
             BinOp::Pow => match right {
-                Token::Number(n) => vec![BinOp::Mul.into(), (n - 1).into(), left].into(),
+                Token::Number(n) => vec![
+                    BinOp::Mul.into(),
+                    n.into(),
+                    vec![BinOp::Pow.into(), left, (n - 1).into()].into(),
+                ]
+                .into(),
                 _ => unimplemented!(),
             },
         }
@@ -187,10 +192,11 @@ impl Diff for Fun {
 fn parse(expr: &str) -> Vec<Token> {
     expr.split(' ')
         .filter_map(|s| match s {
-            "+" => Some(Token::BinOp(BinOp::Add)),
-            "-" => Some(Token::BinOp(BinOp::Sub)),
-            "*" => Some(Token::BinOp(BinOp::Mul)),
-            "/" => Some(Token::BinOp(BinOp::Div)),
+            "+" => Some(BinOp::Add.into()),
+            "-" => Some(BinOp::Sub.into()),
+            "*" => Some(BinOp::Mul.into()),
+            "/" => Some(BinOp::Div.into()),
+            "^" => Some(BinOp::Pow.into()),
             "x" => Some(Token::Var),
             _ => {
                 if let Some(x) = s.parse::<i32>().ok() {
@@ -251,6 +257,7 @@ mod tests {
     fn simple() {
         assert_eq!(diff("5"), "0");
         assert_eq!(diff("x"), "1");
+        assert_eq!(diff("^ x 2"), "* 2 x");
         assert_eq!(diff("+ x x"), "2");
         assert_eq!(diff("+ 1 x"), "1");
         assert_eq!(diff("/ 1 x"), "/ 1 (^ x 2)");
