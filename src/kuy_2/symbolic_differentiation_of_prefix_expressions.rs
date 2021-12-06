@@ -7,6 +7,7 @@ enum BinOp {
     Sub,
     Mul,
     Div,
+    Pow,
 }
 
 #[derive(Clone, Debug)]
@@ -17,9 +18,10 @@ enum Fun {
     Exp,
     Ln,
 }
+
 #[derive(Clone, Debug)]
 enum Token {
-    Number(u32),
+    Number(i32),
     BinOp(BinOp),
     Var,
     Fun(Fun),
@@ -51,6 +53,7 @@ impl ToString for BinOp {
             BinOp::Sub => "-",
             BinOp::Mul => "*",
             BinOp::Div => "/",
+            BinOp::Pow => "^",
         }
         .to_owned()
     }
@@ -78,13 +81,16 @@ impl Diff for Token {
         match self {
             Token::Number(n) => n.diff(tokens),
             Token::BinOp(op) => op.diff(tokens),
+            Token::Fun(fun) => fun.diff(tokens),
             Token::Var => Token::Number(1),
-            _ => unimplemented!(),
+            Token::Expression(expr) => {
+                Token::Expression(expr.iter().map(|t| t.diff(tokens)).collect())
+            }
         }
     }
 }
 
-impl Diff for u32 {
+impl Diff for i32 {
     fn diff(&self, _: &mut Vec<Token>) -> Token {
         return Token::Number(0);
     }
@@ -129,7 +135,36 @@ impl Diff for BinOp {
                 right.clone(),
                 right,
             ]),
+            BinOp::Pow => unimplemented!(),
         }
+    }
+}
+
+// TODO: Test it
+impl Diff for Fun {
+    fn diff(&self, tokens: &mut Vec<Token>) -> Token {
+        let arg = tokens.pop().unwrap();
+
+        let expr = match self {
+            Fun::Sin => vec![Token::Fun(Fun::Cos), arg],
+            Fun::Cos => vec![
+                Token::BinOp(BinOp::Mul),
+                Token::Number(-1),
+                Token::Expression(vec![Token::Fun(Fun::Sin), arg]),
+            ],
+            Fun::Tan => vec![
+                Token::BinOp(BinOp::Div),
+                Token::Expression(vec![
+                    Token::BinOp(BinOp::Pow),
+                    Token::Expression(vec![Token::Fun(Fun::Cos), arg]),
+                    Token::Number(2),
+                ]),
+            ],
+            Fun::Exp => vec![Token::Fun(Fun::Exp), arg],
+            Fun::Ln => vec![Token::BinOp(BinOp::Div), Token::Number(1), arg],
+        };
+
+        Token::Expression(expr)
     }
 }
 
@@ -142,7 +177,7 @@ fn parse(expr: &str) -> Vec<Token> {
             "/" => Some(Token::BinOp(BinOp::Div)),
             "x" => Some(Token::Var),
             _ => {
-                if let Some(x) = s.parse::<u32>().ok() {
+                if let Some(x) = s.parse::<i32>().ok() {
                     Some(Token::Number(x))
                 } else {
                     None
